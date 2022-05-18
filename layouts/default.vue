@@ -1,5 +1,6 @@
 <template>
-  <div>
+
+  <div class="container">
     <div>
       <b-navbar type="dark" variant="dark">
         <b-navbar-brand v-b-toggle.sidebar-1>
