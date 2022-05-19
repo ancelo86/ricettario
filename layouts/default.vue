@@ -7,9 +7,9 @@
           <img src="ricettario.jpg" class="d-inline-block align-top" width="40px" height="30px" alt="Kitten"/>Ricettario
         </b-navbar-brand>
         <div class="container-fluid">
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Cerca</button>
+          <form method="GET" action="/search" class="d-flex">
+            <input class="form-control me-2" placeholder="Cerca" aria-label="Search" name="search"/>
+            <button type="submit">Cerca</button>
           </form>
         </div>
       </b-navbar>
@@ -20,15 +20,15 @@
       </b-sidebar>
     </div>
     <div class="row m-4">
-      <div class="col-xl-1">
-        <b-card class="p-1" v-for="(areas, i) in meals" :key="i" bg-variant="dark" text-variant="white"
+      <div class="col-xl-2">
+        <b-card v-for="(areas, i) in meals" :key="i" bg-variant="dark" text-variant="white"
          border-variant="dark" header="Area" header-bg-variant="dark" header-text-variant="white" align="center">
           <b-link :to="`/area/${area.strArea}`" v-for="(area, item) in areas" :key="item">
             <h6>{{ area.strArea }}</h6>
           </b-link>
         </b-card>
       </div>
-      <div class="col-xl-10">
+      <div class="col-xl-9">
         <Nuxt />
       </div>
       <div class="col-xl-1">
@@ -59,6 +59,8 @@
 export default {
   data() {
     return {
+      url: '',
+      input:'',
       alphabet: [],
       meals: [],
       vociMenu: [
@@ -74,6 +76,10 @@ export default {
           label: "Area",
           to: "/area",
         },
+        {
+          label: "Cerca",
+          to: "/search",
+        },
       ],
     };
   },
@@ -85,12 +91,11 @@ export default {
         let lettera = String.fromCharCode(i);
         this.alphabet.push({ lettera });
       }
-      console.log(this.alphabet);
     } catch (error) {
       console.log(error);
     }
   },
-};
+ };
 </script>
 
 <style>

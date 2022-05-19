@@ -29,16 +29,20 @@
         async mounted() {
             try {
                 let res = await this.$axios.$get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${this.$route.params.alph}`);
-                if(res && res.meals){
+                                   
                     this.meal= res.meals
-                    this.meal.info=[]
-                    for(let i=0; i<this.meal.length; i++){
-                        let nome = this.meal[i].strMeal
-                        let id= this.meal[i].idMeal                            
-                        let img= this.meal[i].strMealThumb
-                        this.mealInfo.push({nome , id , img})
-                    }       
-                }
+                    this.meal.forEach(item => {
+                        const {idMeal , strMeal, strMealThumb} = item
+                        const temp ={idMeal , strMeal, strMealThumb}
+                        this.mealInfo.push({id: idMeal, nome:strMeal, img:strMealThumb})
+                    });
+                    // for(let i=0; i<this.meal.length; i++){
+                    //     let nome = this.meal[i].strMeal
+                    //     let id= this.meal[i].idMeal                            
+                    //     let img= this.meal[i].strMealThumb
+                    //     this.mealInfo.push({nome , id , img})
+                    // }       
+                
             } 
             catch (error) {
                 console.log(error);

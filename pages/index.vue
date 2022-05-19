@@ -7,7 +7,7 @@
   <b-row v-for="meals in italianFood" :key="meals.id">
   <div class="col-xl-2" v-for="mealsItem in meals" :key="mealsItem.id" >
   <b-card class="m-1" bg-variant="dark" text-variant="white" :title='`${mealsItem.strMeal}`' :img-src='`${mealsItem.strMealThumb}`'>
-  <b-button>Dettagli</b-button>
+  <b-button :to='`/meals/${mealsItem.idMeal}`' variant="primary">Dettagli</b-button>
 </b-card>
   </div>
     </b-row>
@@ -28,6 +28,8 @@ export default {
         imgsrc: '',
         title:'',
       italianFood: [],
+      idMeal:''
+
       
 
     };
@@ -35,7 +37,7 @@ export default {
   async mounted() {
     try {
       this.italianFood = await this.$axios.$get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Italian`);
-      // console.log(this.italianFood);
+      console.log(this.italianFood.meals)
 
     } catch (error) {
       console.log(error);
