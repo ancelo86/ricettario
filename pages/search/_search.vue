@@ -35,16 +35,14 @@
                         const temp = { idMeal, strMeal, strMealThumb }
                         this.mealInfo.push({id:idMeal, nome: strMeal, img:strMealThumb})                    
                     });
-                //     this.meal= res.meals
-                //     this.meal.info=[]
-                //     for(let i=0; i<this.meal.length; i++){
-                //         let nome = this.meal[i].strMeal
-                //         let id= this.meal[i].idMeal                            
-                //         let img= this.meal[i].strMealThumb
-                //         this.mealInfo.push({nome , id , img})
-                //     }}
-                    } 
-              
+                    // this.meal= res.meals
+                    //  // for(let i=0; i<this.meal.length; i++){
+                    //     let nome = this.meal[i].strMeal
+                    //     let id= this.meal[i].idMeal                            
+                    //     let img= this.meal[i].strMealThumb
+                    //     this.mealInfo.push({nome , id , img})
+                    // }}
+                                        }               
             }
             
             catch (error) {
